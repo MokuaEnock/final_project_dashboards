@@ -1,0 +1,29 @@
+# Raw data (exclude all files and subfolders)
+raw_data/
+
+# Jupyter notebook checkpoints
+**/.ipynb_checkpoints/
+.ipynb_checkpoints/
+
+# Python cache directories
+__pycache__/
+**/__pycache__/
+
+# Virtual environment folders
+.venv/
+venv/
+**/.venv/
+**/venv/
+
+# Python bytecode
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+
+# VSCode settings
+.vscode/
+
+# Environment files
+.env
+*.env
