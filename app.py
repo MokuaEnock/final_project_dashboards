@@ -10,7 +10,7 @@ from statsmodels.stats.multicomp import pairwise_tukeyhsd
 # --- 1. CONFIGURATION ---
 st.set_page_config(
     page_title="Nairobi Retail Vegetable Index",
-    page_icon="🥬",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -156,7 +156,7 @@ def load_data():
 
         return df
     except FileNotFoundError:
-        st.error(f"⚠️ Data file not found: {file_path}")
+        st.error(f"Data file not found: {file_path}")
         return pd.DataFrame()
     except Exception as e:
         st.error(f"Error loading data: {e}")
@@ -165,13 +165,13 @@ def load_data():
 df = load_data()
 
 if df.empty:
-    st.error("📁 No data available. Please ensure 'final_data.csv' is in the correct location.")
+    st.error("No data available. Please ensure 'final_data.csv' is in the correct location.")
     st.stop()
 
 # --- 4. RESEARCH INTRODUCTION ---
 st.markdown("""
 <div class="research-banner">
-    <h1>🎓 The Nairobi Retail Vegetable Index</h1>
+    <h1>The Nairobi Retail Vegetable Index</h1>
     <p>A Data-Driven Analysis of Price Dispersion and Short-Term Volatility Across Online Retailers</p>
     <p style="font-size: 0.9rem; margin-top: 1rem;">
         <strong>Research Period:</strong> January–May 2025 (121 days) |
@@ -183,18 +183,18 @@ st.markdown("""
 
 # --- 5. NAVIGATION ---
 page = st.sidebar.radio(
-    "📑 Navigation",
-    ["🏠 Executive Summary",
-     "🔬 Hypothesis Testing",
-     "📊 Consumer Dashboard",
-     "📈 Market Analysis",
-     "📖 Research Methodology"]
+    "Navigation",
+    ["Executive Summary",
+     "Hypothesis Testing",
+     "Consumer Dashboard",
+     "Market Analysis",
+     "Research Methodology"]
 )
 
 # ============================================================================
 # PAGE 1: EXECUTIVE SUMMARY
 # ============================================================================
-if page == "🏠 Executive Summary":
+if page == "Executive Summary":
     st.header("Executive Summary")
 
     col1, col2, col3, col4 = st.columns(4)
@@ -237,14 +237,14 @@ if page == "🏠 Executive Summary":
 
     st.markdown("---")
 
-    st.subheader("🎯 Key Findings")
+    st.subheader("Key Findings")
 
     col1, col2 = st.columns(2)
 
     with col1:
         st.markdown("""
         <div class="info-card">
-            <h3>🏪 Market Inefficiency Confirmed</h3>
+            <h3>Market Inefficiency Confirmed</h3>
             <p>The market is highly segmented with <strong>F=1,850.73 (p≈0)</strong>,
             indicating a failure of the "Law of One Price." Consumers face an 81.7% price
             spread for identical goods between retailers.</p>
@@ -253,7 +253,7 @@ if page == "🏠 Executive Summary":
 
         st.markdown("""
         <div class="info-card">
-            <h3>🍃 Biology Drives Volatility</h3>
+            <h3>Biology Drives Volatility</h3>
             <p>Leafy vegetables exhibit <strong>1.14x higher volatility</strong> than tubers
             (CV=104% vs 92%), confirming that perishability creates price risk due to
             inadequate cold-chain infrastructure.</p>
@@ -263,7 +263,7 @@ if page == "🏠 Executive Summary":
     with col2:
         st.markdown("""
         <div class="info-card">
-            <h3>📅 Weekend Myth Busted</h3>
+            <h3>Weekend Myth Busted</h3>
             <p>Contrary to behavioral economics theory, <strong>no weekend premium exists</strong>
             (p=0.447). Online retailers use "menu cost" strategies, maintaining static pricing
             rather than dynamic daily adjustments.</p>
@@ -272,7 +272,7 @@ if page == "🏠 Executive Summary":
 
         st.markdown("""
         <div class="info-card">
-            <h3>💰 Consumer Opportunity</h3>
+            <h3>Consumer Opportunity</h3>
             <p>Strategic vendor selection offers <strong>KES 2,200/month savings</strong>
             (31.7% reduction) for a standard family basket. Farm to Feed consistently
             outperforms premium retailers.</p>
@@ -281,7 +281,7 @@ if page == "🏠 Executive Summary":
 
     st.markdown("---")
 
-    st.subheader("📊 Dataset Overview")
+    st.subheader("Dataset Overview")
 
     date_range = f"{df['date'].min().date()} to {df['date'].max().date()}"
     num_days = (df['date'].max() - df['date'].min()).days
@@ -294,12 +294,12 @@ if page == "🏠 Executive Summary":
     col3.metric("Retailers", num_retailers)
     col4.metric("Commodities", num_commodities)
 
-    st.info(f"📅 **Data Collection Period:** {date_range} | **Coverage:** Transition from dry season to Long Rains")
+    st.info(f"Data Collection Period: {date_range} | Coverage: Transition from dry season to Long Rains")
 
 # ============================================================================
 # PAGE 2: HYPOTHESIS TESTING
 # ============================================================================
-elif page == "🔬 Hypothesis Testing":
+elif page == "Hypothesis Testing":
     st.header("Statistical Hypothesis Testing")
 
     st.markdown("""
@@ -311,18 +311,18 @@ elif page == "🔬 Hypothesis Testing":
 
     # --- HYPOTHESIS 1: WEEKEND EFFECT ---
     st.markdown("---")
-    st.subheader("H₁: Temporal Efficiency (Weekend Premium)")
+    st.subheader("H1: Temporal Efficiency (Weekend Premium)")
 
     st.markdown("""
     <div class="methodology-box">
-        <h4>🔍 Research Question</h4>
+        <h4>Research Question</h4>
         Do online retailers exploit weekend shopping behavior by charging higher prices
         on Saturdays and Sundays to capture consumer surplus from time-constrained shoppers?
 
-        <h4>📐 Statistical Method</h4>
+        <h4>Statistical Method</h4>
         <strong>Mann-Whitney U Test</strong> (Non-parametric test for independent samples)<br>
-        <strong>Null Hypothesis (H₀):</strong> Weekend prices = Weekday prices<br>
-        <strong>Alternative Hypothesis (H₁):</strong> Weekend prices > Weekday prices
+        <strong>Null Hypothesis (H0):</strong> Weekend prices = Weekday prices<br>
+        <strong>Alternative Hypothesis (H1):</strong> Weekend prices > Weekday prices
     </div>
     """, unsafe_allow_html=True)
 
@@ -346,14 +346,14 @@ elif page == "🔬 Hypothesis Testing":
 
     st.markdown(f"""
     <div class="hypothesis-card">
-        <h3>📊 Test Results</h3>
+        <h3>Test Results</h3>
         <div class="result">
             <p><strong>Mann-Whitney U Statistic:</strong> {stat:,.0f}</p>
             <p><strong>P-Value:</strong> {p_value:.5f}</p>
-            <p><strong>Significance Level (α):</strong> 0.05</p>
-            <p><strong>Decision:</strong> {'❌ FAIL TO REJECT H₀' if p_value > 0.05 else '✅ REJECT H₀'}</p>
+            <p><strong>Significance Level (alpha):</strong> 0.05</p>
+            <p><strong>Decision:</strong> {'FAIL TO REJECT H0' if p_value > 0.05 else 'REJECT H0'}</p>
         </div>
-        <p style="margin-top: 1rem;"><strong>💡 Interpretation:</strong> {
+        <p style="margin-top: 1rem;"><strong>Interpretation:</strong> {
             'No statistically significant weekend premium exists. The negligible 0.66% difference suggests online retailers maintain static pricing algorithms rather than implementing dynamic weekend surcharges. This contradicts traditional retail economics but aligns with "menu cost" theory in digital marketplaces.'
             if p_value > 0.05
             else 'A significant weekend premium has been detected, indicating retailers successfully implement temporal price discrimination.'
@@ -362,7 +362,7 @@ elif page == "🔬 Hypothesis Testing":
     """, unsafe_allow_html=True)
 
     # Day-of-week analysis
-    st.markdown("#### 📅 Daily Price Patterns")
+    st.markdown("#### Daily Price Patterns")
 
     day_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     daily_stats = df.groupby('day_name')['price_per_kg'].agg(['mean', 'std', 'count']).reindex(day_order)
@@ -391,22 +391,22 @@ elif page == "🔬 Hypothesis Testing":
     cheapest_day = daily_stats['mean'].idxmin()
     expensive_day = daily_stats['mean'].idxmax()
 
-    st.info(f"📌 **Optimal Shopping Day:** {cheapest_day} (KES {daily_stats.loc[cheapest_day, 'mean']:.2f}/kg) | **Most Expensive:** {expensive_day} (KES {daily_stats.loc[expensive_day, 'mean']:.2f}/kg)")
+    st.info(f"Optimal Shopping Day: {cheapest_day} (KES {daily_stats.loc[cheapest_day, 'mean']:.2f}/kg) | Most Expensive: {expensive_day} (KES {daily_stats.loc[expensive_day, 'mean']:.2f}/kg)")
 
     # --- HYPOTHESIS 2: PERISHABILITY ---
     st.markdown("---")
-    st.subheader("H₂: Structural Volatility (Biological Perishability)")
+    st.subheader("H2: Structural Volatility (Biological Perishability)")
 
     st.markdown("""
     <div class="methodology-box">
-        <h4>🔍 Research Question</h4>
+        <h4>Research Question</h4>
         Does biological perishability create higher price volatility? Specifically, do leafy
         vegetables (high spoilage risk) exhibit greater price fluctuations than tubers (storage-stable)?
 
-        <h4>📐 Statistical Method</h4>
+        <h4>Statistical Method</h4>
         <strong>Coefficient of Variation (CV)</strong> and <strong>Levene's Test</strong><br>
-        CV = (Standard Deviation / Mean) × 100<br>
-        <strong>Null Hypothesis (H₀):</strong> CV<sub>Leafy</sub> = CV<sub>Tuber</sub>
+        CV = (Standard Deviation / Mean) x 100<br>
+        <strong>Null Hypothesis (H0):</strong> CV_Leafy = CV_Tuber
     </div>
     """, unsafe_allow_html=True)
 
@@ -422,7 +422,7 @@ elif page == "🔬 Hypothesis Testing":
     col1, col2 = st.columns(2)
 
     with col1:
-        st.markdown("#### 🌿 Volatility by Biological Type")
+        st.markdown("#### Volatility by Biological Type")
 
         fig_cv = px.bar(
             bio_stats.head(10),
@@ -443,7 +443,7 @@ elif page == "🔬 Hypothesis Testing":
         st.plotly_chart(fig_cv, use_container_width=True)
 
     with col2:
-        st.markdown("#### 📊 Key Categories Comparison")
+        st.markdown("#### Key Categories Comparison")
 
         if 'Leaf' in bio_stats.index and 'Tuber' in bio_stats.index:
             leaf_cv = bio_stats.loc['Leaf', 'cv']
@@ -476,14 +476,14 @@ elif page == "🔬 Hypothesis Testing":
 
     st.markdown(f"""
     <div class="hypothesis-card">
-        <h3>📊 Test Results</h3>
+        <h3>Test Results</h3>
         <div class="result">
             <p><strong>Leafy Vegetables CV:</strong> {bio_stats.loc['Leaf', 'cv']:.2f}%</p>
             <p><strong>Tubers CV:</strong> {bio_stats.loc['Tuber', 'cv']:.2f}%</p>
             <p><strong>Volatility Multiplier:</strong> {ratio:.2f}x</p>
-            <p><strong>Decision:</strong> ✅ CONFIRMED - Biology Drives Price Risk</p>
+            <p><strong>Decision:</strong> CONFIRMED - Biology Drives Price Risk</p>
         </div>
-        <p style="margin-top: 1rem;"><strong>💡 Interpretation:</strong>
+        <p style="margin-top: 1rem;"><strong>Interpretation:</strong>
         Leafy vegetables exhibit {ratio:.2f}x higher price volatility than tubers. This
         structural difference reflects Kenya's inadequate cold-chain infrastructure, which
         imposes a "perishability premium" on short-shelf-life commodities. Consumers face
@@ -493,19 +493,19 @@ elif page == "🔬 Hypothesis Testing":
 
     # --- HYPOTHESIS 3: MARKET SEGMENTATION ---
     st.markdown("---")
-    st.subheader("H₃: Market Segmentation (Strategic Competition)")
+    st.subheader("H3: Market Segmentation (Strategic Competition)")
 
     st.markdown("""
     <div class="methodology-box">
-        <h4>🔍 Research Question</h4>
+        <h4>Research Question</h4>
         Does the "Law of One Price" hold in Nairobi's digital vegetable market? If identical
         products are sold at significantly different prices across retailers, the market is
         inefficient and segmented.
 
-        <h4>📐 Statistical Method</h4>
+        <h4>Statistical Method</h4>
         <strong>One-Way ANOVA</strong> followed by <strong>Tukey's HSD Post-Hoc Test</strong><br>
-        <strong>Null Hypothesis (H₀):</strong> All retailer means are equal<br>
-        <strong>Alternative Hypothesis (H₁):</strong> At least two retailers differ significantly
+        <strong>Null Hypothesis (H0):</strong> All retailer means are equal<br>
+        <strong>Alternative Hypothesis (H1):</strong> At least two retailers differ significantly
     </div>
     """, unsafe_allow_html=True)
 
@@ -519,7 +519,7 @@ elif page == "🔬 Hypothesis Testing":
     col1, col2 = st.columns([2, 1])
 
     with col1:
-        st.markdown("#### 🏪 Retailer Price Positioning")
+        st.markdown("#### Retailer Price Positioning")
 
         fig_retailers = px.box(
             df,
@@ -539,7 +539,7 @@ elif page == "🔬 Hypothesis Testing":
         st.plotly_chart(fig_retailers, use_container_width=True)
 
     with col2:
-        st.markdown("#### 📈 Price Spread Analysis")
+        st.markdown("#### Price Spread Analysis")
 
         cheapest = retailer_stats['mean'].min()
         expensive = retailer_stats['mean'].max()
@@ -571,14 +571,14 @@ elif page == "🔬 Hypothesis Testing":
 
     st.markdown(f"""
     <div class="hypothesis-card">
-        <h3>📊 Test Results</h3>
+        <h3>Test Results</h3>
         <div class="result rejected">
             <p><strong>F-Statistic:</strong> {f_stat:,.2f}</p>
             <p><strong>P-Value:</strong> {p_anova:.2e}</p>
-            <p><strong>Significance Level (α):</strong> 0.05</p>
-            <p><strong>Decision:</strong> ✅ REJECT H₀ - Market is Segmented</p>
+            <p><strong>Significance Level (alpha):</strong> 0.05</p>
+            <p><strong>Decision:</strong> REJECT H0 - Market is Segmented</p>
         </div>
-        <p style="margin-top: 1rem;"><strong>💡 Interpretation:</strong>
+        <p style="margin-top: 1rem;"><strong>Interpretation:</strong>
         The market exhibits extreme segmentation with an F-statistic of {f_stat:,.0f}. The
         {spread:.1f}% price spread between the cheapest and most expensive retailers indicates
         a complete failure of the "Law of One Price." This suggests limited competition, high
@@ -587,17 +587,17 @@ elif page == "🔬 Hypothesis Testing":
     """, unsafe_allow_html=True)
 
     # Retailer Tiers
-    st.markdown("#### 🎯 Retailer Classification")
+    st.markdown("#### Retailer Classification")
 
     market_mean = df['price_per_kg'].mean()
 
     def classify_retailer(price):
         if price < market_mean * 0.8:
-            return "💰 Budget"
+            return "Budget"
         elif price > market_mean * 1.2:
-            return "✨ Premium"
+            return "Premium"
         else:
-            return "📊 Mid-Range"
+            return "Mid-Range"
 
     retailer_stats['tier'] = retailer_stats['mean'].apply(classify_retailer)
 
@@ -613,11 +613,11 @@ elif page == "🔬 Hypothesis Testing":
 # ============================================================================
 # PAGE 3: CONSUMER DASHBOARD (Original Enhanced)
 # ============================================================================
-elif page == "📊 Consumer Dashboard":
+elif page == "Consumer Dashboard":
     st.header("Consumer Price Intelligence Dashboard")
 
     with st.sidebar:
-        st.markdown("### 🎛️ Dashboard Controls")
+        st.markdown("### Dashboard Controls")
 
         available_cats = sorted(df['category'].dropna().unique())
         default_cat_index = available_cats.index('Vegetable') if 'Vegetable' in available_cats else 0
@@ -647,10 +647,10 @@ elif page == "📊 Consumer Dashboard":
     filtered_df = df[(df['date'] > cutoff_date) & (df[filter_col] == selected_filter)].copy()
 
     if filtered_df.empty:
-        st.warning("⚠️ No data available for your selection.")
+        st.warning("No data available for your selection.")
         st.stop()
 
-    st.subheader(f"📊 {display_title}")
+    st.subheader(f"Analysis: {display_title}")
     st.caption(f"Analysis Period: {cutoff_date.date()} to {df['date'].max().date()}")
 
     # Key metrics
@@ -677,7 +677,7 @@ elif page == "📊 Consumer Dashboard":
         st.metric("Price Volatility", f"±{volatility:.0f} KES")
 
     # Price trends
-    st.markdown("#### 📈 Price Trends")
+    st.markdown("#### Price Trends")
 
     fig_trend = go.Figure()
 
@@ -701,7 +701,7 @@ elif page == "📊 Consumer Dashboard":
     st.plotly_chart(fig_trend, use_container_width=True)
 
     # Retailer comparison
-    st.markdown("#### 🏪 Retailer Comparison")
+    st.markdown("#### Retailer Comparison")
 
     retailer_comparison = filtered_df.groupby('source')['price_per_kg'].agg([
         ('Average', 'mean'),
@@ -723,15 +723,15 @@ elif page == "📊 Consumer Dashboard":
 # ============================================================================
 # PAGE 4: MARKET ANALYSIS
 # ============================================================================
-elif page == "📈 Market Analysis":
+elif page == "Market Analysis":
     st.header("Market Structure & Economic Impact")
 
     # Basket Analysis
-    st.subheader("🛒 The 'Nairobi Stew' Basket Analysis")
+    st.subheader("The 'Nairobi Stew' Basket Analysis")
 
     st.markdown("""
     <div class="methodology-box">
-        <h4>📊 Methodology</h4>
+        <h4>Methodology</h4>
         A standardized market basket representing a typical Kenyan household's weekly vegetable
         purchase. This basket enables direct cost comparison across retailers and quantifies
         the economic value of strategic shopping.
@@ -838,7 +838,7 @@ elif page == "📈 Market Analysis":
     st.markdown("---")
 
     # Market concentration
-    st.subheader("📊 Market Structure Analysis")
+    st.subheader("Market Structure Analysis")
 
     col1, col2 = st.columns(2)
 
@@ -875,7 +875,7 @@ elif page == "📈 Market Analysis":
 # ============================================================================
 # PAGE 5: METHODOLOGY
 # ============================================================================
-elif page == "📖 Research Methodology":
+elif page == "Research Methodology":
     st.header("Research Methodology & Data Pipeline")
 
     st.markdown("""
@@ -884,11 +884,11 @@ elif page == "📖 Research Methodology":
     """)
 
     # Data Collection
-    st.subheader("1️⃣ Data Collection & Web Scraping")
+    st.subheader("1 Data Collection & Web Scraping")
 
     st.markdown("""
     <div class="info-card">
-        <h3>🔍 Sampling Strategy</h3>
+        <h3>Sampling Strategy</h3>
         <p><strong>Method:</strong> Automated daily web scraping using Python (BeautifulSoup, Selenium)</p>
         <p><strong>Target Platforms:</strong> Major Nairobi e-commerce retailers</p>
         <p><strong>Frequency:</strong> Daily captures (6:00 AM EAT) to minimize API rate-limiting</p>
@@ -901,16 +901,16 @@ elif page == "📖 Research Methodology":
     with col1:
         st.markdown("""
         **Data Quality Challenges:**
-        - **Unit Heterogeneity:** Mixed units (bunches, grams, pieces)
-        - **Missing Values:** 12% of records incomplete
-        - **Outliers:** High-value herbs distorting aggregate statistics
-        - **Entity Resolution:** Inconsistent product naming conventions
+        - Unit Heterogeneity: Mixed units (bunches, grams, pieces)
+        - Missing Values: 12% of records incomplete
+        - Outliers: High-value herbs distorting aggregate statistics
+        - Entity Resolution: Inconsistent product naming conventions
         """)
 
     with col2:
         st.markdown("""
         **Data Cleaning Pipeline:**
-        1. Unit standardization → KES/kg normalization
+        1. Unit standardization -> KES/kg normalization
         2. Outlier filtering (IQR method, 1.5x threshold)
         3. Entity mapping (fuzzy matching for product names)
         4. Validation filters (price range: 20-1000 KES)
@@ -918,13 +918,13 @@ elif page == "📖 Research Methodology":
 
     # Statistical Methods
     st.markdown("---")
-    st.subheader("2️⃣ Statistical Framework")
+    st.subheader("2 Statistical Framework")
 
     methods_df = pd.DataFrame({
         'Hypothesis': [
-            'H₁: Weekend Premium',
-            'H₂: Perishability',
-            'H₃: Market Segmentation'
+            'H1: Weekend Premium',
+            'H2: Perishability',
+            'H3: Market Segmentation'
         ],
         'Statistical Test': [
             'Mann-Whitney U Test',
@@ -937,9 +937,9 @@ elif page == "📖 Research Methodology":
             'Compares multiple group means with post-hoc pairwise tests'
         ],
         'Significance Level': [
-            'α = 0.05',
+            'a = 0.05',
             'Descriptive (CV comparison)',
-            'α = 0.05'
+            'a = 0.05'
         ]
     })
 
@@ -947,7 +947,7 @@ elif page == "📖 Research Methodology":
 
     # Feature Engineering
     st.markdown("---")
-    st.subheader("3️⃣ Feature Engineering")
+    st.subheader("3 Feature Engineering")
 
     st.markdown("""
     **Constructed Variables:**
@@ -961,7 +961,7 @@ elif page == "📖 Research Methodology":
 
     # Limitations
     st.markdown("---")
-    st.subheader("⚠️ Research Limitations & Constraints")
+    st.subheader("Limitations & Constraints")
 
     col1, col2 = st.columns(2)
 
@@ -985,22 +985,22 @@ elif page == "📖 Research Methodology":
 
     # Future Work
     st.markdown("---")
-    st.subheader("🔮 Future Research Directions")
+    st.subheader("Future Research Directions")
 
     st.markdown("""
-    1. **Predictive Modeling:** SARIMA time series forecasting for price prediction
-    2. **Wholesale Integration:** Link to Ministry of Agriculture data for markup analysis
-    3. **Consumer Segmentation:** Survey data to understand price elasticity
-    4. **Geographic Expansion:** Include offline markets (Wakulima, Marikiti)
-    5. **Quality Metrics:** Computer vision for product quality assessment
+    1. Predictive Modeling: SARIMA time series forecasting for price prediction
+    2. Wholesale Integration: Link to Ministry of Agriculture data for markup analysis
+    3. Consumer Segmentation: Survey data to understand price elasticity
+    4. Geographic Expansion: Include offline markets (Wakulima, Marikiti)
+    5. Quality Metrics: Computer vision for product quality assessment
     """)
 
 # --- FOOTER ---
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #666; padding: 1rem;">
-    <p><strong>📚 Research Project:</strong> Diploma in Data Science | December 8, 2025</p>
-    <p><strong>📊 Dataset:</strong> 22,142 records | 121 days | 2 retailers | 5 months</p>
+    <p><strong>Research Project:</strong> Diploma in Data Science | December 8, 2025</p>
+    <p><strong>Dataset:</strong> 22,142 records | 121 days | 2 retailers | 5 months</p>
     <p><em>"Transforming market opacity into consumer intelligence"</em></p>
 </div>
 """, unsafe_allow_html=True)
